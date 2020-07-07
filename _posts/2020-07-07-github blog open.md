@@ -1,7 +1,8 @@
 ---
 title: "Welcome to Jekyll!"
-date: 2020-07-07 21:17:00 -0400
+date: 2017-10-20 08:26:28 -0400
 categories: jekyll update
 ---
 
 ### github blog open
+ - welcome to my blog
