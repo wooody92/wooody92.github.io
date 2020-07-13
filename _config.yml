@@ -95,7 +95,7 @@ analytics:
 # Site Author
 author:
   name             : "Henry Yoon"
-  avatar           : "/assets/images/profile-img-1.png"
+  avatar           : "/assets/images/profile_img_1.png"
   bio              : "즐거운 개발 일기"
   location         : "South Korea"
   email            : "pkower4@gmail.com"
