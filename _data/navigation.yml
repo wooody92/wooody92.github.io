@@ -4,6 +4,8 @@ main:
     url: https://wooody92.github.io/categories/#
   - title: "Tag"
     url: https://wooody92.github.io/tags/
+  - title: "About"
+    url: https://wooody92.github.io/about/
   # - title: "Sample Posts"
   #   url: /year-archive/
   # - title: "Sample Collections"
