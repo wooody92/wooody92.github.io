@@ -1,26 +1,18 @@
 ---
-title: "알고리즘 풀이"
+title:  "알고리즘 저장소"
+excerpt: "알고리즘 학습 및 풀이 저장소"
 header:
-  teaser: 
-  overlay_image: 
-  overlay_filter:
-  caption: 
+
 categories:
   - algorithm
 tags:
-  - Category
-date: 2020-07-18 18:00:00
-lastmod: 2020-07-18 18:00:00
-sitemap :
-  changefreq : daily
-  priority : 1.0
+  - algorithm
+  - backjoon
+  - programmers
+last_modified_at: 2020-07-20 17:55:00
 ---
 
-# algorithm
 
-알고리즘 풀이 저장소
-
------
 
 ## Backjoon
 
@@ -305,4 +297,19 @@ sitemap :
 - `ArrayList`를 이용하여 해결했으나 시간복잡도로 인해 효율성 테스트에서 실패했다.
 - 주어진 데이터를 조회만 하면 되므로 배열로만 처리하여 효율성 테스트를 통과하였다.
 
+43. [42588 - 탑](https://programmers.co.kr/learn/courses/30/lessons/42588)
 
+- [Solution]
+- 굳이 `stack`으로 풀어야 하나 싶다. 연습을 위해서는 `stack`사용을 연습해야 할까?
+
+44. [42839 - 소수 찾기](https://programmers.co.kr/learn/courses/30/lessons/42839)
+
+- [Solution]
+
+- 재귀와 순열 알고리즘 학습이 필요하다.
+
+  ```
+  https://bcp0109.tistory.com/14
+  ```
+
+- 순열 알고리즘이 정확히 이해가 안가서 다시 풀어봐야겠다.
