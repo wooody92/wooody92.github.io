@@ -9,7 +9,7 @@ tags:
   - Spring
   - Spring Framework
   - IoC 컨테이너
-  - @Component
+  - Component
   - Component Scan
 last_modified_at: 2020-07-30 15:50:00
 

@@ -9,7 +9,7 @@ tags:
   - Spring
   - Spring Framework
   - IoC 컨테이너
-  - @Autowired
+  - Autowired
   - BeanPostProcessor
 last_modified_at: 2020-07-29 15:50:00
 
