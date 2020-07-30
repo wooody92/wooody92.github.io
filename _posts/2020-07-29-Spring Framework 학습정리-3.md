@@ -1,6 +1,6 @@
 ---
 title:  "Spring Framework 학습정리 - 3"
-excerpt: "IoC 컨테이너 2부 : @Autowire"
+excerpt: "IoC 컨테이너 3부 : @Autowire"
 header:
 
 categories:
