@@ -16,9 +16,9 @@ layout: single
 
 함께 일하고 싶은 백엔드 개발자 윤경묵 입니다.
 
-- `Email`  pkower4@gmail.com
-- `GitHub` https://github.com/wooody92
-- `Blog` https://wooody92.github.io/
+- `Email` :  pkower4@gmail.com
+- `GitHub`:  https://github.com/wooody92
+- `Blog` : https://wooody92.github.io/
 
 
 
@@ -54,8 +54,6 @@ layout: single
 
 ### [Github Issue Tracker](https://github.com/wooody92/issue-tracker-12)
 
-- https://github.com/wooody92/issue-tracker-12
-
 - Github의 이슈관리 서비스 클론 프로젝트로,  `Frontend` & `Backend` 3명으로 진행한 프로젝트 입니다. 클린코드 그리고 쿼리 성능 최적화에 초점을 맞추어 개발을 진행했습니다.
 
 - 기술스택
@@ -68,8 +66,6 @@ layout: single
 
 
 ### [Airbnb](https://github.com/wooody92/airbnb-02)
-
-- https://github.com/wooody92/airbnb-02
 
 - 에어비앤비 서비스 클론 프로젝트로, `iOS` & `Backend` 4명으로 진행한 프로젝트 입니다. 페어 프로그래밍을 진행하여 `PR review`와 `Issue`를 적극 활용하여 팀으로써 함께 발전하기위해 노력했습니다.
 
