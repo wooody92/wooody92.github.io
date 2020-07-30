@@ -24,7 +24,7 @@ layout: single
 
 -----
 
-## Introduce.
+# Introduce.
 
 확장성 및 유지보수하기 좋은 클린코드 개발에 관심이 있는 백엔드 개발자입니다. `FrontEnd, BackEnd, iOS` 개발자와 협업하여 웹과 앱 서버를 위한 `DB`설계, `REST API` 개발 그리고 `AWS`를 이용한 인프라를 구축 및 배포를 경험했습니다.
 
@@ -34,9 +34,9 @@ layout: single
 
 
 
---------
+-----
 
-## Skills.
+# Skills
 
 #### Backend
 
@@ -50,7 +50,7 @@ layout: single
 
 -----
 
-## Projects.
+# Projects.
 
 ### [Github Issue Tracker](https://github.com/wooody92/issue-tracker-12)
 
@@ -80,7 +80,7 @@ layout: single
 
 -----
 
-## Work Experience.
+# Work Experience.
 
 ### 2017.02 - 2019.12 [Applied Materials Korea (AMAT)](http://www.appliedmaterials.com/)
 
@@ -92,7 +92,9 @@ layout: single
 
  
 
-## Education.
+-----
+
+# Education.
 
 #### 2020.01 - 2020.06 코드스쿼드 마스터즈코스 백엔드 과정 수료
 
