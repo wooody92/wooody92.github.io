@@ -64,12 +64,12 @@ last_modified_at: 2020-07-30 15:50:00
 
 ```java
 public static void main(String[] args) {
-        new SpringApplicationBuilder()
-						.sources(Demospring51Application.class)
-						.initializers((ApplicationContextInitializer<GenericApplicationContext>) applicationContext -> {
-  					applicationContext.registerBean(MyBean.class);
-            })
-						.run(args);
+	new SpringApplicationBuilder()
+		.sources(Demospring51Application.class)
+		.initializers((ApplicationContextInitializer<GenericApplicationContext>) applicationContext -> {
+			applicationContext.registerBean(MyBean.class);
+		})
+		.run(args);
 }
 ```
 
