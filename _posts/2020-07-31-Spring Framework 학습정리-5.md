@@ -1,0 +1,202 @@
+---
+title:  "Spring Framework 학습정리 - 5"
+excerpt: "Ioc 컨테이너 5부 : 빈의 스코프"
+header:
+
+categories:
+  - Spring
+tags:
+  - Spring
+  - Spring Framework
+  - IoC 컨테이너
+  - 빈의 스코프
+  - 싱글톤
+  - 프로토타입
+last_modified_at: 2020-07-31 17:50:00
+
+---
+
+# IoC 컨테이너와 빈
+
+## Ioc 컨테이너 5부 : 빈의 스코프
+
+### 싱글톤 스코프
+
+- 기본 스코프는 싱글톤이며, 이는 애플리케이션 전반에 거쳐서 해당 빈의 인스턴스가 오직 하나인 것을 말한다.
+
+- 특별한 경우가 아니면 대부분의 경우 싱글톤 스코프를 사용한다.
+
+- 아래 코드에서 빈으로 등록된 `proto`와  `single`에서 가져온 `proto`는 동일한 인스턴스이다.
+
+  ```java
+  @Component
+  public class AppRunner implements ApplicationRunner {
+  
+      @Autowired
+      Single single;
+  
+      @Autowired
+      Proto proto;
+  
+      @Override
+      public void run(ApplicationArguments args) throws Exception {
+          System.out.println(proto);
+          System.out.println(single.getProto());
+      }
+  }
+  
+  @Component
+  public class Single {
+  
+      @Autowired
+      private Proto proto;
+  
+      public Proto getProto() {
+          return proto;
+      }
+  }
+  
+  @Component
+  public class Proto {
+  }
+  ```
+
+  ```java
+  // result
+  dev.spring.framework.springstudy.Scope.Proto@27f368b4
+  dev.spring.framework.springstudy.Scope.Proto@27f368b4
+  ```
+
+
+
+### 프로토타입 스코프
+
+- 매번 새로운 객체, 새로운 인스턴스를 만들어서 써야하는 경우이다.
+
+- 빈을 받아올 때만 새로운 인스턴스가 생성된다. 아래는 다른 인스턴스이다.
+
+  ```java
+  @Component
+  public class AppRunner implements ApplicationRunner {
+  
+      @Autowired
+      Single single;
+  
+      @Autowired
+      Proto proto;
+  
+      @Override
+      public void run(ApplicationArguments args) throws Exception {
+          System.out.println(proto);
+          System.out.println(single.getProto());
+      }
+  }
+  
+  @Component
+  public class Single {
+  
+      @Autowired
+      private Proto proto;
+  
+      public Proto getProto() {
+          return proto;
+      }
+  }
+  
+  @Component @Scope("prototype")
+  public class Proto {
+  }
+  ```
+
+  ```java
+  // result
+  dev.spring.framework.springstudy.Scope.Proto@59e35de5
+  dev.spring.framework.springstudy.Scope.Proto@1c9539f6
+  ```
+
+
+
+### 스코프 간 참조
+
+- 프로토타입 빈이 싱글톤 빈을 참조하면 아무 문제가 없다.
+
+- 싱글톤 빈이 프로토타입 빈을 참조하면 프로토타입 빈이 업데이트가 안되므로 아래 `scoped-proxy`를 이용하면 프록시를 참조하여 사용 할 수 있다.
+
+- 방식 : `scoped-proxy`, `Object-Provider`, `Provider(표준)`
+
+  ```java
+  @Component
+  public class AppRunner implements ApplicationRunner {
+  
+      @Autowired
+      ApplicationContext ctx;
+  
+      @Override
+      public void run(ApplicationArguments args) throws Exception {
+          System.out.println("proto");
+          System.out.println(ctx.getBean(Proto.class));
+          System.out.println(ctx.getBean(Proto.class));
+          System.out.println(ctx.getBean(Proto.class));
+  
+          System.out.println("single");
+          System.out.println(ctx.getBean(Single.class));
+          System.out.println(ctx.getBean(Single.class));
+          System.out.println(ctx.getBean(Single.class));
+  
+          System.out.println("proto by single");
+          System.out.println(ctx.getBean(Single.class).getProto());
+          System.out.println(ctx.getBean(Single.class).getProto());
+          System.out.println(ctx.getBean(Single.class).getProto());
+      }
+  }
+  
+  @Component @Scope(value = "prototype", proxyMode = ScopedProxyMode.TARGET_CLASS)
+  public class Proto {
+  }
+  ```
+
+  ```java
+  // before : proto by single이 변하지 않음
+  proto
+  dev.spring.framework.springstudy.Scope.Proto@75e7a46d
+  dev.spring.framework.springstudy.Scope.Proto@47591292
+  dev.spring.framework.springstudy.Scope.Proto@6ec8a59b
+  single
+  dev.spring.framework.springstudy.Scope.Single@6052ffd8
+  dev.spring.framework.springstudy.Scope.Single@6052ffd8
+  dev.spring.framework.springstudy.Scope.Single@6052ffd8
+  proto by single
+  dev.spring.framework.springstudy.Scope.Proto@201c4bf1
+  dev.spring.framework.springstudy.Scope.Proto@201c4bf1
+  dev.spring.framework.springstudy.Scope.Proto@201c4bf1
+    
+  // after : proto by single이 proxy를 참조하여 변함
+  proto
+  dev.spring.framework.springstudy.Scope.Proto@152a6b13
+  dev.spring.framework.springstudy.Scope.Proto@35029930
+  dev.spring.framework.springstudy.Scope.Proto@5db555e5
+  single
+  dev.spring.framework.springstudy.Scope.Single@367e4cdb
+  dev.spring.framework.springstudy.Scope.Single@367e4cdb
+  dev.spring.framework.springstudy.Scope.Single@367e4cdb
+  proto by single
+  dev.spring.framework.springstudy.Scope.Proto@63fd4931
+  dev.spring.framework.springstudy.Scope.Proto@25c9d4ae
+  dev.spring.framework.springstudy.Scope.Proto@423123e
+  ```
+
+  
+
+### 싱글톤 객체 사용시 주의할 점
+
+- 프로퍼티가 공유되므로 쓰레드 세이프한 방식으로 코드를 작성해야 한다.
+
+- `Thread-1`에서 `value=1`하고 `Thread-2`에서 `value=2`했을 때, `Thread-1`의 `value`가 2로 출력 될 수 있다.
+
+  ```java
+  @Component
+  public class Single {
+      int value = 0;
+  }
+  ```
+
