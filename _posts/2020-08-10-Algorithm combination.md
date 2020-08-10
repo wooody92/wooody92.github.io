@@ -6,7 +6,7 @@ header:
 categories:
   - Algorithm
 tags:
-  - Algorithm
+  - algorithm
   - combination
   - recursive
   - backtracking
