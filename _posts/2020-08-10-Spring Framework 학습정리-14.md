@@ -1,0 +1,130 @@
+---
+title:  "Spring Framework 학습정리 - 14"
+excerpt: "SpEL : Spring Expression Language"
+header:
+
+categories:
+  - Spring
+tags:
+  - Spring
+  - Spring Framework
+  - SpEL
+  - Spring Expression Language
+last_modified_at: 2020-08-10 19:00:00
+
+---
+
+# SpEL
+
+## Spring Expression Language
+
+### Spring EL 이란?
+
+- 스프링 3.0부터 지원하며, 객체 그래프를 조회하고 조작하는 기능을 제공한다.
+
+- 스프링 코어단 뿐만 아니라, 스프링 프로젝트 전반에 걸쳐 사용된다.
+
+  - `Spring Security`, `@Value`, `@ConditionalOnExpression`, `Thymeleaf`
+
+  -  `Spring Data : @Query`
+
+    ```java
+    // index 기반으로 사용
+    @Query("select u from User u where u.age = ?#{[0]}")
+    List<User> findUsersByAge(int age);
+    
+    // index에 domain이 갖고있는 값을 참고해야 할 때 사용 
+    @Query("select u from User u where u.fristName = :#{#customer.firtName}")
+    List<User> findUsersByCustomersFirstName(@Param("customer") Customer customer);
+    ```
+
+
+
+### 문법
+
+- `#{"표현식"}` : 표현식을 실행 후 결과값을 프로퍼티에 넣어준다.
+
+- `${"프로퍼티"}` : `application.properties`의 값을 가져와서 넣어준다.
+
+- 표현식은 프로퍼티를 가질 수 있지만, 반대의 경우는 안된다.
+
+- 빈으로 등록된 클래스의 값 또는 메서드를 가져와 사용할 수 있다.
+
+  ```java
+  @Component
+  public class AppRunner implements ApplicationRunner {
+  
+      // 표현식
+      @Value("#{1 + 1}")
+      int value;
+  
+      @Value("#{'hello ' + 'world'}")
+      String greeting;
+  
+      @Value("#{1 eq 1}")
+      boolean trueOrFalse;
+  
+      @Value("hello")
+      String hello;
+  
+      // 프로퍼티
+      @Value("${my.value}")
+      int myValue;
+  
+      // 표현식 내부의 프로퍼티 적용
+      @Value("#{${my.value} eq 100}")
+      boolean isMyValue100;
+  
+      // Sample 빈의 data
+      @Value("#{sample.data}")
+      int data;
+  
+      @Override
+      public void run(ApplicationArguments args) throws Exception {
+          System.out.println(value);
+          System.out.println(greeting);
+          System.out.println(trueOrFalse);
+          System.out.println(hello);
+          System.out.println(myValue);
+          System.out.println(isMyValue100);
+          System.out.println(data);
+      }
+  }
+  ```
+
+  ```java
+  // result
+  2
+  hello world
+  true
+  hello
+  100
+  true
+  300
+  ```
+
+
+
+### SpEL 구성
+
+- `Spring EL`의 기반은 다음과 같으며, 변환시 `Conversion` 서비스를 사용한다.
+
+  ```java
+  @Component
+  public class AppRunner implements ApplicationRunner {
+  
+      @Override
+      public void run(ApplicationArguments args) throws Exception {
+          ExpressionParser parser = new SpelExpressionParser();
+          Expression expression = parser.parseExpression("2 + 100");
+          Integer value = expression.getValue(Integer.class);
+          System.out.println(value);
+      }
+  }
+  ```
+
+  ```java
+  // result
+  102
+  ```
+
