@@ -1,0 +1,264 @@
+---
+title:  "Spring Framework 학습정리 - 17"
+excerpt: "스프링 AOP : 애노테이션 기반의 스프링 AOP"
+header:
+
+categories:
+  - Spring
+tags:
+  - Spring
+  - Spring Framework
+  - Spring AOP
+  - Aspect
+  - Pointcut
+  - Advice
+last_modified_at: 2020-08-13. 16:20:00
+
+---
+
+# Spring AOP
+
+## 스프링 AOP : 애노테이션 기반의 스프링 AOP
+
+### 
+
+### Aspect 정의
+
+- 클래스에 `@Aspect`를 추가하여 `Aspect`로 정의한다.
+- 해당 클래스를 컴포넌트 스캔을 사용해서 빈으로 등록해야 하니까 `@Component`도 추가한다.
+- `@Aspect`로 정의된 빈에 해야 할 일(`Advice`)과 어디에(`Pointcut`) 사용 할 지 정의 해야 한다. 
+
+### Pointcut 정의
+
+- `@Pointcut` : 주요 표현식 (`extention`, `@annotation`, `bean`)
+
+### Advice 정의
+
+- `@Before`, `@AfterReturning`, `@AfterThrowing`, `@Aroun`
+
+
+
+### 예제 코드 (@Around("execution("")"))
+
+- `pjp` : `advice`가 적용되는 대상이며, 여기서는 `SimpleEventService`에 구현된 메서드 자체를 말한다.
+
+- `@Arount` : 해당 `Advice`를 어떻게 적용할 것인가. `target` 메서드를(여기서는 `pjp`) 감싸는 형태로 적용이 된다.
+
+- 여기서 사용 된 `Pointcut` 표현식은  `"execution(* dev.spring..*.EventService.*(..))"`으로 `EventService` 내부의 모든 메서드에 `Aspect`에 정의된 일들을 실행하라라는 의미이다.
+
+  ```java
+  @Component
+  @Aspect
+  public class PerfAspect {
+  
+      // Advice
+      @Around("execution(* dev.spring..*.EventService.*(..))")
+      public Object logPerf(ProceedingJoinPoint pjp) throws Throwable {
+          long begin = System.currentTimeMillis();
+  
+          // pjp : advice가 적용되는 대상이며, 여기서는 SimpleEventService에 구현된 메서드 자체를 말한다.
+          Object retVal = pjp.proceed();
+  
+          System.out.println(System.currentTimeMillis() - begin);
+          return retVal;
+      }
+  }
+  ```
+
+  ```java
+  public class AppRunner implements ApplicationRunner {
+  
+      // 인터페이스가 있는 경우 인터페이스 타입으로 주입받는 것을 권장한다.
+      @Autowired
+      EventService eventService;
+  
+      @Override
+      public void run(ApplicationArguments args) throws Exception {
+          eventService.createEvent();
+          eventService.publishEvent();
+          eventService.deleteEvent();
+      }
+  }
+  ```
+
+  ```java
+  // Subject
+  public interface EventService {
+  
+      void createEvent();
+  
+      void publishEvent();
+  
+      void deleteEvent();
+  }
+  ```
+
+  ```java
+  // Real Subject
+  @Service
+  public class SimpleEventService implements EventService{
+  
+      @Override
+      public void createEvent() {
+          try {
+              Thread.sleep(1000);
+          } catch (InterruptedException e) {
+              e.printStackTrace();
+          }
+          System.out.println("Created an event");
+      }
+  
+      @Override
+      public void publishEvent() {
+          try {
+              Thread.sleep(2000);
+          } catch (InterruptedException e) {
+              e.printStackTrace();
+          }
+          System.out.println("Published an event");
+      }
+  
+      @Override
+      public void deleteEvent() {
+          System.out.println("Deleted an event");
+      }
+  }
+  ```
+
+  ```java
+  // result
+  
+  Created an event
+  1008
+  Published an event
+  2003
+  Deleted an event
+  0
+  ```
+
+- 위 `@Around("execution("")")` 방식으로 처리하면, 기존 코드에 변경이 없다는 장점이 있지만 메서드에 개별적으로 `Aspect`를 지정 할 수 없다는 단점이 있다.
+
+
+
+### 예제 코드 ( @Around("@annotation()"))
+
+- `Annotation Interface`를 만들어 사용한다면 원하는 메서드에 애노테이션을 붙여 개별적으로 지정하여 사용 할 수 있다.
+
+- `@Retention(RetentionPolicy.CLASS)` : 이 애노테이션 정보를 얼마나 유지할 것인가를 의미한다. `default = CLASS` 이다. 
+
+  - `RetentionPolicy.CLASS` : 클래스 파일까지 유지하는 것을 의미한다. 컴파일단 바이트 코드에 해당 애노테이션 정보가 남아있다.
+  - `RetentionPolicy.SOURCE` : 컴파일하면 해당 애노테이션 정보가 사라진다. `RUNTIME`도 있으나 굳이 런타임까지 유지할 필요가 없다.
+
+  ```java
+  @Documented
+  @Target(ElementType.METHOD)
+  @Retention(RetentionPolicy.CLASS)
+  public @interface PerLogging {
+  }
+  ```
+
+  ```java
+  @Component
+  @Aspect
+  public class PerfAspect {
+  
+      // Advice
+      @Around("@annotation(PerLogging)")
+      public Object logPerf(ProceedingJoinPoint pjp) throws Throwable {
+          long begin = System.currentTimeMillis();
+          Object retVal = pjp.proceed();
+          System.out.println(System.currentTimeMillis() - begin);
+          return retVal;
+      }
+  }
+  ```
+
+  ```java
+  // Real Subject
+  @Service
+  public class SimpleEventService implements EventService{
+  
+      @PerLogging
+      @Override
+      public void createEvent() {
+          try {
+              Thread.sleep(1000);
+          } catch (InterruptedException e) {
+              e.printStackTrace();
+          }
+          System.out.println("Created an event");
+      }
+  
+      @PerLogging
+      @Override
+      public void publishEvent() {
+          try {
+              Thread.sleep(2000);
+          } catch (InterruptedException e) {
+              e.printStackTrace();
+          }
+          System.out.println("Published an event");
+      }
+  
+      @Override
+      public void deleteEvent() {
+          System.out.println("Deleted an event");
+      }
+  }
+  ```
+
+  ```java
+  // result
+  
+  Created an event
+  1007
+  Published an event
+  2003
+  Deleted an event
+  ```
+
+
+
+### 예제 코드 (@Around("bean()"), @Before)
+
+- `@Around("bean()")` : 타겟으로 설정한 클래스 빈에 포함된 모든 메서드에 적용한다.
+
+- `@Before` : 타겟 실행 전에 `Aspect`를 실행한다.
+
+  ```java
+  @Component
+  @Aspect
+  public class PerfAspect {
+  
+      // Advice
+      @Around("bean(simpleEventService)")
+      public Object logPerf(ProceedingJoinPoint pjp) throws Throwable {
+          long begin = System.currentTimeMillis();
+          Object retVal = pjp.proceed();
+          System.out.println(System.currentTimeMillis() - begin);
+          return retVal;
+      }
+  
+      @Before("bean(simpleEventService)")
+      public void hello() {
+          System.out.println("hello");
+      }
+  }
+  ```
+
+  ```java
+  // result
+  
+  hello
+  Created an event
+  1006
+  hello
+  Published an event
+  2003
+  hello
+  Deleted an event
+  0
+  ```
+
+  
+
