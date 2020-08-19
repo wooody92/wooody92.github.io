@@ -4,10 +4,10 @@ excerpt: "스프링 부트 시작하기 : 스프링 부트 소개"
 header:
 
 categories:
-  - Spring
-tags:
   - Spring Boot
-  - 스프링 부트
+tags:
+  - Spring
+  - Spring Boot
 last_modified_at: 2020-08-18. 18:00:00
 
 ---
