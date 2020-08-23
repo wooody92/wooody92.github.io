@@ -1,7 +1,8 @@
 ---
 title: "헨리의 이력서"
-permalink: /about/
 layout: single
+permalink: /about/
+author_profile: true
 ---
 
 ## HELLO WORLD !
