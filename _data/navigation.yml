@@ -17,7 +17,7 @@ main:
 sidebar-sample:
   - title: Backend
     children:
-   	  - title: "Spring"
+      - title: "Spring"
         url: /categories/#spring
       - title: "Spring Boot"
         url: /categories/#spring-boot
