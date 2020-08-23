@@ -12,3 +12,20 @@ main:
   #   url: /collection-archive/
   # - title: "Sitemap"
   #   url: /sitemap/
+
+
+sidebar-sample:
+  - title: Backend
+    children:
+   	  - title: "Spring"
+        url: /categories/#spring
+      - title: "Spring Boot"
+        url: /categories/#spring-boot
+      - title: "Java"
+        url: /categories/#java
+      - title: "JPA"
+        url: /categories/#jpa
+  - title: Algorithm
+    children:
+      - title: "algorithm"
+        url: /categories/#algorithm
