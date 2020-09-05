@@ -1,6 +1,6 @@
 ---
 title:  "Spring Boot - Template Engine"
-excerpt: "스프링 Web MVC : Thymeleaf"
+excerpt: "스프링 Web MVC : Thymeleaf와 HtmlUnit"
 header:
 
 categories:
@@ -11,6 +11,7 @@ tags:
   - Spring Web MVC
   - Template Engine
   - Thymeleaf
+  - HtmlUnit
 last_modified_at: 2020-09-05. 16:00:00
 
 ---
@@ -126,3 +127,31 @@ last_modified_at: 2020-09-05. 16:00:00
   ```
 
   
+
+<br>
+
+## Spring Web MVC 8부 : HtmlUnit
+
+### HtmlUnit
+
+- `htmlunit`과 `htmlunit-driver`의 의존성을 추가해야 사용 할 수 있다.
+
+- 위 방식처럼 `mockMvc`를 사용하면 모델과 뷰 이름 등 확인할 수 있지만, `htmlUnit`은 `html`에 조금 더 특화되어 있는 테스트를 작성 할 수 있다. 취향차이이므로 선택해서 사용하면 된다.
+
+  ```java
+  @RunWith(SpringRunner.class)
+  @WebMvcTest(SampleController.class)
+  public class SampleControllerTest {
+  
+      @Autowired
+      WebClient webClient;
+  
+      @Test
+      public void hello() throws IOException {
+          HtmlPage page = webClient.getPage("/hello");
+          HtmlHeading1 h1 = page.getFirstByXPath("//h1");
+          assertThat(h1.getTextContent()).isEqualToIgnoringCase("henry");
+      }
+  }
+  ```
+
