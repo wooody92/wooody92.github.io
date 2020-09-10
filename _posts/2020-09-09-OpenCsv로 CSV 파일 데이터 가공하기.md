@@ -32,7 +32,7 @@ last_modified_at: 2020-09-09. 14:40:00
 
 ### OpenCsv로 CSV 파일 읽고 쓰기
 
-- 실제 데이터를 가공하기 전에 `OpenCsv 사용법을 연습해봅니다.
+- 실제 데이터를 가공하기 전에 `OpenCsv` 사용법을 연습해봅니다.
 
 - `OpenCsv` 사용을 위해 `Gradle`의 경우 아래와 같이 의존성을 추가합니다.
 
@@ -82,8 +82,12 @@ last_modified_at: 2020-09-09. 14:40:00
 
 - 위 코드를 실행해보면 아래와 같이 지정한 경로에 `sample.csv` 생성되고, 그 파일을 읽어 정상적으로 출력하는 것을 볼 수 있습니다.
 
-  <img width="767" alt="csv-write" src="https://user-images.githubusercontent.com/58318041/92558514-ac293d00-f2a9-11ea-9dc1-e73bc044b0c6.png">
+  - 쓰기
 
+  <img width="767" alt="csv-write" src="https://user-images.githubusercontent.com/58318041/92558514-ac293d00-f2a9-11ea-9dc1-e73bc044b0c6.png">
+  
+  - 읽기
+  
   <img width="767" alt="csv-read" src="https://user-images.githubusercontent.com/58318041/92558526-b3504b00-f2a9-11ea-9196-5fe333d59a0a.png">
 
 
@@ -94,7 +98,7 @@ last_modified_at: 2020-09-09. 14:40:00
 
 - 필요한 데이터 컬럼은 아래와 같습니다.
 
-- 좌측의 숫자는 컬럼의 인덱스로 특정 컬럼(카테고리)의 데이터만 가져올 때 필요하여 적어놓았습니다.
+- 좌측의 숫자는 컬럼 인덱스로 특정 컬럼(카테고리)의 데이터만 가져올 때 필요하여 적어놓았습니다.
 
 - 중간은 카테고리이며 공공데이터 포털에서 지정한 이름입니다.
 
@@ -133,7 +137,7 @@ last_modified_at: 2020-09-09. 14:40:00
   idea.max.intellisense.filesize=40960
   ```
 
-- 서울시 상권 정보 `CSV` 데이터는 `','`로 구분되는 일반적인 `CSV`와는 다르게 `'|'`로 구분되어 있습니다. 아래는 가공 전과 후 데이터입니다.
+- 구분자가 `','`인 일반적인 `CSV` 양식과는 다르게 서울시 상권 정보 `CSV` 데이터는 `'|'`로 구분되어 있습니다. 아래는 가공 전과 후 데이터입니다.
 
   - 전
 
@@ -238,4 +242,5 @@ last_modified_at: 2020-09-09. 14:40:00
 
 ## References
 
-- [https://codechacha.com/ko/java-write-csv-file-with-opencsv/](
+- [https://codechacha.com/ko/java-write-csv-file-with-opencsv](https://codechacha.com/ko/java-write-csv-file-with-opencsv/)
+
