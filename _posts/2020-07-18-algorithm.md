@@ -10,7 +10,7 @@ tags:
   - 알고리즘
   - backjoon
   - programmers
-last_modified_at: 2020-08-17 21:00:00
+last_modified_at: 2020-09-11 20:00:00
 ---
 
 <br>
@@ -87,6 +87,19 @@ last_modified_at: 2020-08-17 21:00:00
      ```
 
    - 완전탐색(`DFS`, `BFS`, `Backtracking`, `permutation` 등)과 그 방법들의 관계에 대해서 명확하게 이해가 필요하다.
+
+8. [14502 - 연구소](https://www.acmicpc.net/problem/14502)
+
+   - [Solution](https://github.com/wooody92/algorithm/blob/master/src/main/java/backjoon/laboratory_14502/Main.java)
+   - 완전탐색 `DFS` 문제임을 파악하지 못했다. 백트래킹과 좌표계 탐색을 학습하기 좋은 문제여서 학습 후 정리했다.
+   - [https://wooody92.github.io/algorithm/Algorithm-backtracking/](https://wooody92.github.io/algorithm/Algorithm-backtracking/)
+
+9. [14503 - 로봇 청소기](https://www.acmicpc.net/problem/14503)
+
+   - [Solution](https://github.com/wooody92/algorithm/blob/master/src/main/java/backjoon/robotic_vacuum_14503/Main.java)
+   - 방향을 바꾸면서 완전 탐색하는 방식까지 구현했는데, 후진 및 종료조건의 경우를 구현하지 못해 구글을 참고하여 풀었다.
+   - 완전탐색이 아닌 `DFS`를 학습하기 좋은 문제라고 생각하여 블로그에 고민했던 점들을 정리하였다.
+   - [https://wooody92.github.io/algorithm/Algorithm-DFS/](https://wooody92.github.io/algorithm/Algorithm-DFS/)
 
 <br><br>
 
@@ -433,7 +446,107 @@ last_modified_at: 2020-08-17 21:00:00
 
 14. [42842 - 카펫](https://programmers.co.kr/learn/courses/30/lessons/42842)
 
-    - [Solution]
+    - [Solution](https://github.com/wooody92/algorithm/blob/master/src/main/java/programmers/level_2/carpet_42842/Solution.java)
     - 전체 타일 갯수의 약수들의 집합을 구하고, 약수와 몫의 합이 가장 작은 경우를 판별하여 풀이하였다.
     - 결과값이 갈색 타일의 갯수와 일치하는 지 여부도 판별해야 모든 테스트 케이스를 통과할 수 있다.
+
+15. [12911 - 다음 큰 숫자](https://programmers.co.kr/learn/courses/30/lessons/12911)
+
+    - [Solution](https://github.com/wooody92/algorithm/blob/master/src/main/java/programmers/level_2/next_number_12911/Solution.java)
+    - `Integer.bitCount()` 메서드를 이용하여 주어진 수의 1의 갯수를 구할 수 있다.
+
+16. [12924 - 숫자의 표현](https://programmers.co.kr/learn/courses/30/lessons/12924)
+
+    - [Solution](https://github.com/wooody92/algorithm/blob/master/src/main/java/programmers/level_2/serial_number_12924/Solution.java)
+
+17. [12909 - 올바른 괄호](https://programmers.co.kr/learn/courses/30/lessons/12909)
+
+    - [Solution](https://github.com/wooody92/algorithm/blob/master/src/main/java/programmers/level_2/braket_12909/Solution.java)
+    - `()))((()` 와 같이 갯수가 일치해도 문법적으로 맞지 않는 경우도 확인해야 한다.
+
+18. [42888 - 오픈채팅방 : kakao 2019](https://programmers.co.kr/learn/courses/30/lessons/42888?language=java)
+
+    - [Solution](https://github.com/wooody92/algorithm/blob/master/src/main/java/programmers/level_2/open_chat_42888/Solution.java)
+    - `HashMap`과 `List`를 이용하여 어렵지않게 풀었다.
+
+19. [42890 - 후보키 : kakao 2019](https://programmers.co.kr/learn/courses/30/lessons/42890)
+
+    - [Solution] 재도전하기
+    - 비트마스크에 대해 학습
+
+20. [17683 -방금그곡 : kakao 2018](https://programmers.co.kr/learn/courses/30/lessons/17683)
+
+    - [Solution](https://github.com/wooody92/algorithm/blob/master/src/main/java/programmers/level_2/shazam_17683/Solution.java)
+    - 처음 풀이에서 몇가지 테스트케이스에 통과하지 못했다. 다른 사람의 풀이를 보니 `C#`의 경우 `c`로 치환하여 풀이하였다.
+    - 데이터를 저장하는 `Music` 클래스와 `C# -> c` 치환을 이용하여 다시 풀었다.
+
+21. [17680 - 캐시 : kakao 2018](https://programmers.co.kr/learn/courses/30/lessons/17680)
+
+    - [Solution](https://github.com/wooody92/algorithm/blob/master/src/main/java/programmers/level_2/cache_17680/Solution.java)
+
+    - `Queue`로 풀이하였으나 몇가지 테스트에 통과하지 못해서 `List`로 풀이하였다.
+
+    - 두 가지의 실수 포인트가 있었다.
+
+      ```java
+      1. cache에 city값이 있는경우 LRU(Least Recently Used)이므로 현재 위치의 데이터를 지우고, List의 가장 뒤(tail)로 변경한다. Queue의 경우는 Last로 변경한다.
+        
+      2. 처음 cache를 주어진 cacheSize만큼 추가할 때 cache가 cacheSize만큼 채워지지 않고 cache hit하는 경우가 생길 수 있음을 고려해야한다.
+      ```
+
+22. [60057 - 문자열 압축 : kakao 2020](https://programmers.co.kr/learn/courses/30/lessons/60057)
+
+    - [Solution] 재도전하기
+    - 이상하게 안풀린다. 다음에 풀기로 결심했다.
+
+23. [17687 - n진수 게임 : kakao 2018](https://programmers.co.kr/learn/courses/30/lessons/17687)
+
+    - [Solution](https://github.com/wooody92/algorithm/blob/master/src/main/java/programmers/level_2/n_game_17687/Solution.java)
+    - 특정한 수 `number`를 `n`진수로 변환하는 메서드 코드를 작성해야 했는데, 이전에 [124 나라의 숫자](https://github.com/wooody92/algorithm/blob/master/src/main/java/programmers/level_2/country_of_124_12899/Solution.java) 에서 3진수 구하는 문제를 풀었던 기억이 났다.
+    - 진수변환하는 `nConvert`메서드에서 `StringBuilder`를 사용하면 `0.1ms`가 걸렸고, `String`을 사용하면 `15ms` 가까이 걸렸다.
+    - 이를 보고 `String`을 사용해서 객체를 계속 추가하면 단순히 메모리 공간을 더 차지하는 수준이(`mutable`과 `immutable` 관점에서) 하니고 속도에도 영향을 준다는 것을 알게 되었다.
+
+24. [17677 - 뉴스 클러스터링 : kakao 2018](https://programmers.co.kr/learn/courses/30/lessons/17677)
+
+    - [Solution](https://github.com/wooody92/algorithm/blob/master/src/main/java/programmers/level_2/news_clustering_17677/Solution.java)
+
+    - `ArrayList`도 `Array`와 같이 단순히 `list1 = list2`로 복사하면 `call by reference` 주소값으로 복사가 된다. `list1.addAll(list2)`로 `value` 값을 복사해서 사용했다.
+
+    - 영문자 이외의 모든 문자를 허용하지 않을 때(숫자, 공백, 특수문자 제거) 정규식과 `match` 메서드를 이용해보았다.
+
+      ```java
+      String regex = "^[a-zA-Z]*$";
+      if (str.matches(regex)) {
+        // str이 숫자, 공백, 특수문자 등 영문자 이외의 값을 갖고 있다면 false
+        // str이 오직 영문자만 갖고있다면 true
+      }
+      ```
+
+25. [17686 - 파일명 정렬 : kakao 2018](https://programmers.co.kr/learn/courses/30/lessons/17686)
+
+    - [Solution](https://github.com/wooody92/algorithm/blob/master/src/main/java/programmers/level_2/sorting_files_17686/Solution.java)
+    - 정규식을 이용하였고, 클래스를 생성하여 객체지향적으로 풀었다.
+    - 문자열을 파싱하고 조건에 맞도록 `Comparator`와 `compareTo`를 사용하여 정렬하는 문제였다. `Comparator` 사용법을 이해하여 블로그에 정리하였다.
+    - [https://wooody92.github.io/algorithm/Algorithm-Comparator/](https://wooody92.github.io/algorithm/Algorithm-Comparator/)
+
+26. [60058 - 괄호 변환 : kakao 2020](https://programmers.co.kr/learn/courses/30/lessons/60058)
+
+    - [Solution]
+    - 재귀를 이용한 문자열 처리 문제였고, 재귀 로직을 문제에서 지문 형식으로 알려주었다.
+    - 지문을 보고 어떤 구조인지 이해가 안가서 구글링으로 지문을 이해했다.
+
+27. [67257 - 수식 최대화 : kakao 2020](https://programmers.co.kr/learn/courses/30/lessons/67257)
+
+    - [Solution] 재도전하기
+
+    - 빠르게 풀어보려고 하드코딩으로 정리 없이 풀었는데, 테스트케이스에서 실패했다. 다시 천천히 풀어봐야겠다.
+
+    - 다른 풀이들도 참고해보기
+
+      ```
+      https://codingjuny.tistory.com/42
+      https://msmk530.tistory.com/147
+      ```
+
+    
 
