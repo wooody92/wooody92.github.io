@@ -32,7 +32,7 @@ last_modified_at: 2020-09-09. 14:40:00
 
 ### OpenCsv로 CSV 파일 읽고 쓰기
 
-- 실제 데이터를 가공하기 전에 `OpenCsv` 사용법을 연습해봅니다.
+- 실제 데이터를 가공하기 전에 `OpenCsv 사용법을 연습해봅니다.
 
 - `OpenCsv` 사용을 위해 `Gradle`의 경우 아래와 같이 의존성을 추가합니다.
 
@@ -82,12 +82,8 @@ last_modified_at: 2020-09-09. 14:40:00
 
 - 위 코드를 실행해보면 아래와 같이 지정한 경로에 `sample.csv` 생성되고, 그 파일을 읽어 정상적으로 출력하는 것을 볼 수 있습니다.
 
-  - 쓰기
-
   <img width="767" alt="csv-write" src="https://user-images.githubusercontent.com/58318041/92558514-ac293d00-f2a9-11ea-9dc1-e73bc044b0c6.png">
-  
-  - 읽기
-  
+
   <img width="767" alt="csv-read" src="https://user-images.githubusercontent.com/58318041/92558526-b3504b00-f2a9-11ea-9196-5fe333d59a0a.png">
 
 
@@ -98,7 +94,7 @@ last_modified_at: 2020-09-09. 14:40:00
 
 - 필요한 데이터 컬럼은 아래와 같습니다.
 
-- 좌측의 숫자는 컬럼 인덱스로 특정 컬럼(카테고리)의 데이터만 가져올 때 필요하여 적어놓았습니다.
+- 좌측의 숫자는 컬럼의 인덱스로 특정 컬럼(카테고리)의 데이터만 가져올 때 필요하여 적어놓았습니다.
 
 - 중간은 카테고리이며 공공데이터 포털에서 지정한 이름입니다.
 
@@ -137,7 +133,7 @@ last_modified_at: 2020-09-09. 14:40:00
   idea.max.intellisense.filesize=40960
   ```
 
-- 구분자가 `','`인 일반적인 `CSV` 양식과는 다르게 서울시 상권 정보 `CSV` 데이터는 `'|'`로 구분되어 있습니다. 아래는 가공 전과 후 데이터입니다.
+- 서울시 상권 정보 `CSV` 데이터는 `','`로 구분되는 일반적인 `CSV`와는 다르게 `'|'`로 구분되어 있습니다. 아래는 가공 전과 후 데이터입니다.
 
   - 전
 
@@ -231,6 +227,68 @@ last_modified_at: 2020-09-09. 14:40:00
   }
   ```
 
+
+
+### OpenCsv로 데이터 가공하기 #4
+
+- 가공한 CSV 데이터를 MySQL에 입력할 때 몇가지 문제가 발생했습니다.
+
+- 각 데이터들에 id 값을 추가했습니다.
+
+- CSV 생성 시 모든 데이터에 쌍따옴표(`"`)가 자동으로 추가되어 DB에서 int, double 타입의 컬럼값을 읽어오지 못합니다.
+
+  - `CSVWriter.NO_QUOTE_CHARACTER`를 추가하여 쌍따옴표를 입력하지 않도록 하여 해결했습니다.
+
+- 도로명 주소값에 콤미(`,`)가 포함된 경우가 있습니다. MySQL에 데이터 마이그레이션 시 구분자를 `,`로 사용하기에 문제가 발생합니다.
+
+  - 도로명 주소의 `,`가 필수사항이 아니므로 문자열 파싱하여 제거했습니다.
+
+- 실제 최종 변경된 코드는 아래와 같습니다.
+
+  ```java
+  private static void filterCsvData(String path, String newPath) throws IOException {
+    CSVReader reader = new CSVReader(new FileReader(path), '|');
+    CSVWriter writer = new CSVWriter(new FileWriter(newPath), ',', CSVWriter.NO_QUOTE_CHARACTER);
+  
+    int id = 0;
+    String[] nextLine;
+    while ((nextLine = reader.readNext()) != null) {
+      // 음식 카테고리만 가져온다. 음식 카테고리의 유흥주점은 제외한다.
+      if (!nextLine[CATEGORY.number].equals("음식") || nextLine[CATEGORY_MAIN.number].equals("유흥주점")) {
+        continue;
+      }
+  
+      // 기록 순서
+      int[] category = {
+        ADDRESS.number,
+        ADDRESS_CITY.number,
+        ADDRESS_DISTRICT.number,
+        ADDRESS_DISTRICT2.number,
+        ADDRESS_OLD.number,
+        ADDRESS_PROVINCE.number,
+        CATEGORY.number,
+        CATEGORY_CODE.number,
+        CATEGORY_INDUSTRY.number,
+        CATEGORY_MAIN.number,
+        CATEGORY_SUB.number,
+        LATITUDE.number,
+        LONGITUDE.number,
+        NAME.number,
+        ZIP_CODE.number
+      };
+      id++;
+      String[] data = new String[category.length + 1];
+      data[0] = String.valueOf(id);
+      for (int i = 0; i < category.length; i++) {
+        data[i + 1] = nextLine[category[i]]
+          .replaceAll(",", "");
+      }
+      writer.writeNext(data);
+    }
+    writer.close();
+  }
+  ```
+
   
 
 ### 결론
@@ -242,5 +300,4 @@ last_modified_at: 2020-09-09. 14:40:00
 
 ## References
 
-- [https://codechacha.com/ko/java-write-csv-file-with-opencsv](https://codechacha.com/ko/java-write-csv-file-with-opencsv/)
-
+- [https://codechacha.com/ko/java-write-csv-file-with-opencsv/](
