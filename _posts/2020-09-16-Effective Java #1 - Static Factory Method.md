@@ -1,5 +1,5 @@
 ---
-title:  "Effective Java - Static Factory Method"
+title:  "Effective Java #1 - Static Factory Method"
 excerpt: "Item 1 : 생성자 대신 정정 팩토리 메서드를 고려하라"
 header:
 
