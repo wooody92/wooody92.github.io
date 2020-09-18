@@ -159,4 +159,5 @@ last_modified_at: 2020-09-16. 15:20:00
 ## References
 
 - Effective Java 3/E - Joshua Bloch
+- [Java-squid 스터디 #1](https://github.com/java-squid/effective-java/issues/1)
 - [https://github.com/keesun/study/blob/master/effective-java/item1.md](https://github.com/keesun/study/blob/master/effective-java/item1.md)
