@@ -128,6 +128,6 @@ last_modified_at: 2020-09-19. 01:40:00
 
 - Effective Java 3/E - Joshua Bloch
 - [Java-squid 스터디 #3](https://github.com/java-squid/effective-java/issues/3)
-- [https://github.com/keesun/study/blob/master/effective-java/item3.md](https://github.com/keesun/study/blob/master/effective-java/item2.md)
-- [https://javabom.tistory.com/67](https://javabom.tistory.com/67)
+- [https://github.com/keesun/study/blob/master/effective-java/item3.md](https://github.com/keesun/study/blob/master/effective-java/item3.md)
+- [https://javabom.tistory.com/13](https://javabom.tistory.com/13)
 
