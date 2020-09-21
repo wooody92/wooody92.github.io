@@ -1,5 +1,5 @@
 ---
-title:  "Spring Framework 학습정리 - 2"
+title:  "Spring #2 - ApplicationContext"
 excerpt: "IoC 컨테이너 2부 : ApplicationContext와 다양한 빈 설정 방법"
 header:
 

@@ -1,5 +1,5 @@
 ---
-title:  "Spring Framework 학습정리 - 7"
+title:  "Spring #7 - MessageSource"
 excerpt: "Ioc 컨테이너 7부 : MessageSource"
 header:
 

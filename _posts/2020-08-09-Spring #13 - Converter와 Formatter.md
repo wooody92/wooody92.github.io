@@ -1,5 +1,5 @@
 ---
-title:  "Spring Framework 학습정리 - 13"
+title:  "Spring #13 - Converter와 Formatter"
 excerpt: "데이터 바인딩 추상화 : Converter와 Formatter"
 header:
 

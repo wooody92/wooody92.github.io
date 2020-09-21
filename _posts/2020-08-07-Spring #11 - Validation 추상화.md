@@ -1,5 +1,5 @@
 ---
-title:  "Spring Framework 학습정리 - 11"
+title:  "Spring #11 - Validation 추상화"
 excerpt: "Validation 추상화"
 header:
 

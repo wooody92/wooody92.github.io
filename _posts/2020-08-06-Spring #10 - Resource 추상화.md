@@ -1,5 +1,5 @@
 ---
-title:  "Spring Framework 학습정리 - 10"
+title:  "Spring #10 - Resource 추상화"
 excerpt: "Resource 추상화"
 header:
 

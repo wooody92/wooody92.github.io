@@ -1,5 +1,5 @@
 ---
-title:  "Spring Framework 학습정리 - 3"
+title:  "Spring #3 - @Autowire"
 excerpt: "IoC 컨테이너 3부 : @Autowire"
 header:
 

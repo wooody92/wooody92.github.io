@@ -1,5 +1,5 @@
 ---
-title:  "Spring Framework 학습정리 - 8"
+title:  "Spring #8 - ApplicationEventPublisher"
 excerpt: "Ioc 컨테이너 8부 : ApplicationEventPublisher"
 header:
 

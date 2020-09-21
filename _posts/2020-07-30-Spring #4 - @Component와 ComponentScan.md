@@ -1,5 +1,5 @@
 ---
-title:  "Spring Framework 학습정리 - 4"
+title:  "Spring #4 - @Component와 ComponentScan"
 excerpt: "IoC 컨테이너 4부 : @Component와 컴포넌트 스캔"
 header:
 

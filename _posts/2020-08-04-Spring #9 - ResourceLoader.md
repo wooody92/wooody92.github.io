@@ -1,5 +1,5 @@
 ---
-title:  "Spring Framework 학습정리 - 9"
+title:  "Spring #9 - ResourceLoader"
 excerpt: "Ioc 컨테이너 9부 : ResourceLoader"
 header:
 

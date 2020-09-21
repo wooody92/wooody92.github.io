@@ -1,5 +1,5 @@
 ---
-title:  "Spring Framework 학습정리 - 6"
+title:  "Spring #6 - Environment, Profile, Property"
 excerpt: "Ioc 컨테이너 6부 : Environment - 프로파일과 프로퍼티"
 header:
 

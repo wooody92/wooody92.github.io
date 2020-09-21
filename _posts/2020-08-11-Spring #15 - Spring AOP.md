@@ -1,5 +1,5 @@
 ---
-title:  "Spring Framework 학습정리 - 15"
+title:  "Spring #15 - Spring AOP"
 excerpt: "스프링 AOP : 개념소개"
 header:
 

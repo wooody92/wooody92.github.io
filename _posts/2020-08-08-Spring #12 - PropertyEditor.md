@@ -1,5 +1,5 @@
 ---
-title:  "Spring Framework 학습정리 - 12"
+title:  "Spring #12 - PropertyEditor"
 excerpt: "데이터 바인딩 추상화 : PropertyEditor"
 header:
 
