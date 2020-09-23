@@ -155,12 +155,17 @@ last_modified_at: 2020-09-22. 00:05:00
   281
   ```
 
-  
+
+
+### 스터디 저장소
+
+- [java-squid / effective-java / issue #6](https://github.com/java-squid/effective-java/issues/6)
+
+
 
 ## References
 
 - Effective Java 3/E - Joshua Bloch
-- [Java-squid 스터디 #6](https://github.com/java-squid/effective-java/issues/6)
 - [https://github.com/keesun/study/blob/master/effective-java/item6.md](https://github.com/keesun/study/blob/master/effective-java/item6.md)
 - [https://javabom.tistory.com/30](https://javabom.tistory.com/30)
 
