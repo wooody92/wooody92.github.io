@@ -208,4 +208,5 @@ last_modified_at: 2020-10-23 15:30:00
 
 - [https://sundries-in-myidea.tistory.com/4](https://sundries-in-myidea.tistory.com/4)
 - [https://take-her-to-the-moon-for-me.tistory.com/15](https://take-her-to-the-moon-for-me.tistory.com/15)
-- [https://yunyoung1819.tistory.com/86](
+- [https://yunyoung1819.tistory.com/86](https://yunyoung1819.tistory.com/86)
+
