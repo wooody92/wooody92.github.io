@@ -10,7 +10,7 @@ tags:
   - 알고리즘
   - backjoon
   - programmers
-last_modified_at: 2020-09-11 20:00:00
+last_modified_at: 2020-11-01 19:00:00
 ---
 
 <br>
@@ -92,7 +92,7 @@ last_modified_at: 2020-09-11 20:00:00
 
    - [Solution](https://github.com/wooody92/algorithm/blob/master/src/main/java/backjoon/laboratory_14502/Main.java)
    - 완전탐색 `DFS` 문제임을 파악하지 못했다. 백트래킹과 좌표계 탐색을 학습하기 좋은 문제여서 학습 후 정리했다.
-   - [https://wooody92.github.io/algorithm/Algorithm-backtracking/](https://wooody92.github.io/algorithm/Algorithm-backtracking/)
+   - [https://wooody92.github.io/algorithm/Algorithm-backtracking/](https://wooody92.github.io/algorithm/Algorithm-%EC%99%84%EC%A0%84%ED%83%90%EC%83%89/)
 
 9. [14503 - 로봇 청소기](https://www.acmicpc.net/problem/14503)
 
@@ -100,6 +100,46 @@ last_modified_at: 2020-09-11 20:00:00
    - 방향을 바꾸면서 완전 탐색하는 방식까지 구현했는데, 후진 및 종료조건의 경우를 구현하지 못해 구글을 참고하여 풀었다.
    - 완전탐색이 아닌 `DFS`를 학습하기 좋은 문제라고 생각하여 블로그에 고민했던 점들을 정리하였다.
    - [https://wooody92.github.io/algorithm/Algorithm-DFS/](https://wooody92.github.io/algorithm/Algorithm-DFS/)
+
+10. [14719 - 빗물](https://www.acmicpc.net/status?user_id=skyskysky0&problem_id=14719&from_mine=1)
+
+    - [Solution] 재도전 하기
+
+    - 예외 케이스를 통과하지 못해 코드를 수정하다보니 꼬였다.
+
+    - 예외 테스트 케이스
+
+      ```java
+      // #1
+      9 5
+      9 8 7 6 5
+      
+      // #2
+      5 5
+      5 5 4 5 5
+        
+      // #3
+      5 5
+      3 5 3 4 3
+      ```
+
+11. [2504 - 괄호의 값](https://www.acmicpc.net/problem/2504)
+
+    - [Solution]
+
+    
+
+12. [1260 - DFS와 BFS](https://www.acmicpc.net/problem/1260)
+
+    - [Solution]
+    - DFS와 BFS의 기본 동작원리를 연습하는 좋은 문제였다.
+    - [https://wooody92.github.io/algorithm/Algorithm-BFS%EC%99%80-DFS/](https://wooody92.github.io/algorithm/Algorithm-BFS%EC%99%80-DFS/)
+
+13. [1254 - 팰린드롬 만들기](https://www.acmicpc.net/problem/1254)
+
+    - [Solution]
+    - 팰린드롬인지 확인하는 메서드, 문자열을 뒤집는 메서드, 뒤집은 문자열을 기존 문자열에 붙이는 메서드를 이용하여 풀이하였다.
+    - [참고링크](https://m.blog.naver.com/PostView.nhn?blogId=occidere&logNo=221190032874&proxyReferer=https:%2F%2Fwww.google.com%2F)
 
 <br><br>
 
@@ -531,13 +571,13 @@ last_modified_at: 2020-09-11 20:00:00
 
 26. [60058 - 괄호 변환 : kakao 2020](https://programmers.co.kr/learn/courses/30/lessons/60058)
 
-    - [Solution]
+    - [Solution](https://github.com/wooody92/algorithm/blob/master/src/main/java/programmers/level_2/bracket_transform_60058/Solution.java)
     - 재귀를 이용한 문자열 처리 문제였고, 재귀 로직을 문제에서 지문 형식으로 알려주었다.
     - 지문을 보고 어떤 구조인지 이해가 안가서 구글링으로 지문을 이해했다.
 
 27. [67257 - 수식 최대화 : kakao 2020](https://programmers.co.kr/learn/courses/30/lessons/67257)
 
-    - [Solution] 재도전하기
+    - [Solution](https://github.com/wooody92/algorithm/blob/master/src/main/java/programmers/level_2/math_expression_67257/Solution.java) 재도전하기
 
     - 빠르게 풀어보려고 하드코딩으로 정리 없이 풀었는데, 테스트케이스에서 실패했다. 다시 천천히 풀어봐야겠다.
 
@@ -548,5 +588,207 @@ last_modified_at: 2020-09-11 20:00:00
       https://msmk530.tistory.com/147
       ```
 
-    
+28. [12981 - 영어 끝말잇기](https://programmers.co.kr/learn/courses/30/lessons/12981)
+
+    - [Solution](https://github.com/wooody92/algorithm/blob/master/src/main/java/programmers/level_2/word_chain_12981/Solution.java)
+    - 중복 체크시 자료구조로 `Set`을 사용할 수 있었지만, 주어진 `words` 최대 길이가 100으로 매우 짧아 for 문으로 처리하였다.
+
+29. [SQL - LEVEL 1](https://programmers.co.kr/learn/challenges)
+
+    - 특정 조건 제외해서 검색한다.(`NOT * IN ('')`)
+
+      ```sql
+      SELECT animal_id, name FROM animal_ins WHERE NOT intake_condition IN ('Aged');
+      ```
+
+    - 여러 조건에서의 정렬 - 이름으로 우선 정렬하고 중복되면 날짜 역순으로 정렬한다.
+
+      ```sql
+      SELECT animal_id, name, datetime FROM animal_ins ORDER BY name, datetime DESC;
+      ```
+
+    - NULL 검색하기 (`WHERE * IS NULL`)
+
+      ```sql
+      SELECT animal_id FROM animal_ins WHERE name IS NULL;
+      ```
+
+    - NULL이 아닌 컬럼 검색하기
+
+      ```sql
+      SELECT animal_id FROM animal_ins WHERE name IS NOT NULL;
+      ```
+
+30. [SQL - LEVEL 2](https://programmers.co.kr/learn/challenges)
+
+    - 특정 컬럼 NULL 체크 후 데이터 변경하여 조회하기(`NVL`, `IFNULL`)
+
+      ```sql
+      SELECT animal_type, IFNULL(name, 'No name'), sex_upon_intake FROM animal_ins ORDER BY animal_id;
+      ```
+
+    - 컬럼 갯수 세기 (`COUNT`)
+
+      ```sql
+      SELECT COUNT(animal_id) FROM animal_ins;
+      ```
+
+    - 그룹화 하여 조회 (`GROUP BY`)
+
+      ```sql
+      SELECT animal_type, COUNT(animal_id) FROM animal_ins GROUP BY animal_type ORDER BY animal_type;
+      ```
+
+    - 그룹에서의 조건 조회 (`HAVING`)
+
+      ```sql
+      SELECT name, COUNT(animal_id) FROM animal_ins GROUP BY name HAVING count(name) > 1 ORDER BY name;
+      ```
+
+    - Datetime에서 시간만 뽑기 (`HOUR`)
+
+      ```sql
+      SELECT HOUR(datetime) AS hour, COUNT(animal_id) FROM animal_outs GROUP BY HOUR(datetime) HAVING hour >= 9 AND hour <= 19 ORDER BY hour;
+      ```
+
+    - 다중 조건 검색 (`WHERE * IN ('')`)
+
+      ```sql
+      SELECT animal_id, name, sex_upon_intake FROM animal_ins WHERE name IN ('Lucy', 'Ella', 'Pickle', 'Rogan', 'Sabrina', 'Mitty') ORDER BY animal_id;
+      ```
+
+    - 부분적으로 일치하는 컬럼 조회 (`LIKE = ''`)
+
+      [https://coding-factory.tistory.com/114](https://coding-factory.tistory.com/114)
+
+      ```sql
+      SELECT animal_id, name FROM animal_ins WHERE animal_type = 'Dog' AND name LIKE '%EL%' ORDER BY name;
+      ```
+
+    - IF 조건절 사용하기
+
+      ```sql
+      SELECT animal_id, name, IF(sex_upon_intake LIKE '%Neutered%' OR sex_upon_intake LIKE '%Spayed%', 'O', 'X') FROM animal_ins ORDER BY animal_id;
+      ```
+
+    - Date_Format 변경하기(`DATE_FORMAT(datetime, '')`)
+
+      ```sql
+      SELECT animal_id, name, DATE_FORMAT(datetime, '%Y-%m-%d') FROM animal_ins ORDER BY animal_id;
+      ```
+
+31. [64065 - 튜플 : kakao 2029](https://programmers.co.kr/learn/courses/30/lessons/64065)
+
+    - [Solution](https://github.com/wooody92/algorithm/blob/master/src/main/java/programmers/level_2/tuple_64065/Solution.java)
+    - 문자열 파싱 문제였다. `!ArrayList.contains(str)`로 특정 문자열의 List 포함 여부를 확인할 수 있다.
+
+32. [SQL - LEVEL 3](https://programmers.co.kr/learn/challenges)
+
+    - 한 쪽에 포함되지 않은 데이터만 가져오기(`LEFT OUTER JOIN`, `WHERE i.animal_id IS NULL`)
+
+      https://m.blog.naver.com/PostView.nhn?blogId=wideeyed&logNo=221435077767&proxyReferer=https:%2F%2Fwww.google.com%2F
+
+    - `INNER JOIN == JOIN`, `LEFT OUTER JOIN == LEFT JOIN`
+
+      ```sql
+      SELECT o.animal_id, o.name FROM animal_outs AS o LEFT OUTER JOIN animal_ins AS i ON o.animal_id = i.animal_id WHERE i.animal_id IS NULL ORDER BY o.animal_id;
+      ```
+
+    - `INNER JOIN` 테이블에서의 날짜 차이(`DATEDIFF(i.datetime, o.datetime)`)
+
+      ```sql
+      SELECT i.animal_id, i.name FROM animal_ins AS i INNER JOIN animal_outs AS o ON i.animal_id = o.animal_id ORDER BY DATEDIFF(i.datetime, o.datetime) LIMIT 2;
+      ```
+
+33. [43165 - 타겟 넘버](https://programmers.co.kr/learn/courses/30/lessons/43165)
+
+    - [Solution](https://github.com/wooody92/algorithm/blob/master/src/main/java/programmers/level_2/target_number_43165/Solution.java)
+
+    - 유형이 정해져있는 기본적인 dfs 재귀 문제이다. 트리 구조로 분기되는 방식을 이해하자.
+
+    - 주어진 `numbers` 배열의 모든 값들을 탐색해야 하므로 `base case`는 `depth == numbers.length`이다.
+
+    - 가장 아래 `depth`까지 왔을 때 `sum == target` 인지 확인한다.
+
+      ```java
+      public void dfs(int[] numbers, int depth, int sum, int target) {
+        if (depth == numbers.length) {
+          if (sum == target) {
+            result++;
+          }
+          return;
+        }
+        dfs(numbers, depth + 1, sum + numbers[depth], target);
+        dfs(numbers, depth + 1, sum - numbers[depth], target);
+      }
+      ```
+
+34. [12945 - 피보나치 수](https://programmers.co.kr/learn/courses/30/lessons/12945)
+
+    - [Solution](https://github.com/wooody92/algorithm/blob/master/src/main/java/programmers/level_2/fibonacci_12945/Solution.java)
+    - 일반적인 재귀에서 동일한 계산의 반복수행을 memoization(메모이제이션)으로 제거하여 실행 속도를 증가시킬 수 있다.
+    - 이 문제에서는 피사노 주기를 이용한 문제이다.
+    - 피사노 주기란 피보나치 수를 k로 나누었을 때, 그 나머지는 항상 주기를 갖는 성질이다. 
+
+35. [49993 - 스킬트리](https://programmers.co.kr/learn/courses/30/lessons/49993)
+
+    - [Solution](https://github.com/wooody92/algorithm/blob/master/src/main/java/programmers/level_2/skill_tree_49993/Solution.java)
+
+    - 매개 변수로 비교값을 받아 정규식을 이용하여 풀었다.
+
+      ```java
+      String regex = String.format("[%s]*$", base);
+      ```
+
+    - 스킬트리에 스킬이 하나도 포함되어있지 않다면 연계 스킬과 연관이 없으므로 result++을 해줘야 한다.
+
+36. [12980 - 점프와 순간이동](https://programmers.co.kr/learn/courses/30/lessons/12980)
+
+    - [Solution](https://github.com/wooody92/algorithm/blob/master/src/main/java/programmers/level_2/jump_teleport_12980/Solution.java)
+    - 어렵게 생각하지 않고 수학적으로 풀었다. 탐색의 함정에 빠질 수도 있는 문제같다.
+
+37. [12977 - 소수 만들기](https://programmers.co.kr/learn/courses/30/lessons/12977)
+
+    - [Solution](https://github.com/wooody92/algorithm/blob/master/src/main/java/programmers/level_2/making_prime_number_12977/Solution.java)
+    - 처음 풀이에서 세 수의 합을 HashMap에 넣고 중복 된 소수 판별을 줄였다.
+    - 두번째 방식에서는 모든 합에 대해 소수 판별을 진행하지만 코드가 훨씬 간결하다.
+    - 주어진 테스트 케이스로는 두 방식 모두 소요시간이 비슷했다.
+
+38. [62048 - 멀쩡한 사각형](https://programmers.co.kr/learn/courses/30/lessons/62048)
+
+    - [Solution](https://github.com/wooody92/algorithm/blob/master/src/main/java/programmers/level_2/square_62048/Solution.java)
+
+    - 알고리즘보다는 규칙을 찾기 위한 수학 문제에 가까운 것 같다.
+
+    - width와 height이 주어졌을 때, 망가진 사각형의 갯수는 최대 공약수를 이용 해 구할 수 있다.
+
+      ```java
+      w + h - gcd;
+      ```
+
+39. [42626 - 더 맵게](https://programmers.co.kr/learn/courses/30/lessons/42626)
+
+    - [Solution](https://github.com/wooody92/algorithm/blob/master/src/main/java/programmers/level_2/scoville_42626/Solution.java)
+    - 처음에 ArrayList를 사용해서 풀었을 때는 효율성에 통과하지 못했다.
+    - PriorityQueue 자료구조를 이용하여 동일한 로직의 코드를 작성하니 통과했다.
+    - ArrayList 방식의 경우 `Collection.sort`로 정렬해주는 과정이 추가되기 때문에 시간 복잡도가 올라간 것으로 보인다.
+    - Java의 PrimaryQueue의 경우 Heap으로 구현되어 있다.
+    - 힙(Heap)은 최댓값 및 최솟값을 찾아내는 연산을 빠르게 하기 위해 고안된 완전 이진 트리의 특징을 갖는 자료구조이다.
+    - 참고 링크
+      - https://coding-factory.tistory.com/603
+      - https://hannom.tistory.com/36
+
+40. [42839 - 소수 찾기](https://programmers.co.kr/learn/courses/30/lessons/42839)
+
+    - [Solution]
+    - 이전에 작성한 순열과 소수 메서드를 이용해서 풀이하였다.
+    - 순열과 조합은 알고리즘에서 문제풀이를 위한 수단으로 자주 사용하는 것 같다.
+    - 풀이 자체는 어렵진 않았는데 순열을 참고자료없이 구현하는 연습을 해봐야겠다.
+    - isPrime()에서 주어진 수가 2보다 큰 짝수일때는 false로 반환하면 약간의 성능을 올릴 수 있을 것 같다.
+
+41. [12973 - 짝지어 제거하기](https://programmers.co.kr/learn/courses/30/lessons/12973?language=java)
+
+    - [Solution]
+    - 주어진 문자열 길이의 조건을 보면 1,000,000이다. 효율성을 생각해서 풀이하여야 한다.
+    - 시간복잡도를 낮추기 위한 스택 자료구조의 장점이 돋보이는 문제였다.
 
