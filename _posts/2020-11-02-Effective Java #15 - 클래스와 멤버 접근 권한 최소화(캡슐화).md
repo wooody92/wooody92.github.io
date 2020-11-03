@@ -8,8 +8,7 @@ categories:
 tags:
   - Java
   - Effective Java
-  - try with resources
-last_modified_at: 2020-10-09. 17:10:00
+last_modified_at: 2020-11-02. 17:00:00
 
 ---
 
