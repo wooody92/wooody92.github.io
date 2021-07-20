@@ -1,15 +1,12 @@
 ---
-title: "헨리의 이력서"
+title: "HELLO WORLD !"
 layout: single
 permalink: /about/
 author_profile: true
 ---
 
-## HELLO WORLD !
+## PROFILE
 
-이력서 작성중. 업데이트 예정이에요.
+- [LinkedIn](https://www.linkedin.com/in/%EA%B2%BD%EB%AC%B5-%EC%9C%A4-b37479185/)
 
-
-
-----
 
