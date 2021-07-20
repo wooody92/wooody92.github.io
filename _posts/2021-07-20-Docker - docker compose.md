@@ -195,10 +195,10 @@ version: '3'
 
 ```yaml
 services:
-	mysql:
-	...
-	django:
-	...
+  mysql:
+  ...
+  django:
+  ...
 ```
 
 - 실행할 컨테이너의 이름 정의이다.
@@ -210,8 +210,8 @@ services:
 
 ```yaml
 services:
-	mysql:
-		image: mysql:5.7
+  mysql:
+    image: mysql:5.7
 ```
 
 - 컨테이너에 사용할 이미지 이름과 태그를 정의한다.
@@ -223,10 +223,10 @@ services:
 
 ```yaml
 services:
-	mysql:
-	...
-		ports: 
-			- "3306:3306"	## "{host-port}:{container-port}"
+  mysql:
+  ...
+    ports: 
+      - "3306:3306"	## "{host-port}:{container-port}"
 ```
 
 - 호스트와 컨테이너의 포트 연결을 정의한다. port-fowarding
@@ -237,10 +237,10 @@ services:
 
 ```yaml
 services:
-	mysql:
-	...
-		environment: 
-			- MYSQL_ROOT_PASSWORD: 1234
+  mysql:
+  ...
+    environment: 
+      - MYSQL_ROOT_PASSWORD: 1234
 ```
 
 - 컨테이너에서 사용할 환경변수를 정의할 수 있다.
@@ -252,9 +252,9 @@ services:
 
 ```yaml
 services:
-	mysql:
-	...
-		volumes:
+  mysql:
+  ...
+    volumes:
       - ./mysql:/var/lib/mysql	## {host-directory}:{container-directory}
 ```
 
@@ -267,8 +267,8 @@ services:
 
 ```yaml
 services:
-	mysql:
-		restart: always ## "no", always, on-failure, unless-stopped
+  mysql:
+    restart: always ## "no", always, on-failure, unless-stopped
 ```
 
 - 컨테이너 재시작 정책으로 "no", always, on-failure, unless-stopped 설정이 있다.
@@ -279,10 +279,10 @@ services:
 
 ```yaml
 services:
-	mysql:
-		build: 
-			context: .
-			dockerfile: ./compose/mysql/Dockerfile-dev
+  mysql:
+    build: 
+      context: .
+      dockerfile: ./compose/mysql/Dockerfile-dev
 ```
 
 - 이미지를 자체 빌드 후 사용할 수 있다.
