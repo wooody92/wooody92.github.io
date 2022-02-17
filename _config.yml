@@ -63,7 +63,6 @@ algolia:
 google:
   search_engine_id       : # YOUR_SEARCH_ENGINE_ID
   instant_search         : # false (default), true
-base_image_url           : https://github.com/wooody92/wooody92.github.io/blob/master/_posts
 
 # SEO Related
 google_site_verification :
